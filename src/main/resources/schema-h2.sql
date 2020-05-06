@@ -28,3 +28,21 @@ CREATE TABLE QUESTION_TO_ANSWER
         FOREIGN KEY (question_id) REFERENCES QUESTION(id),
         UNIQUE(answer, question_id)
         );
+
+CREATE TABLE PLAYER
+        (
+        id NUMBER(10) NOT NULL,
+        name VARCHAR2(50) NOT NULL,
+        PRIMARY KEY(id)
+        );
+
+CREATE TABLE PLAYER_TO_QUESTION
+        (
+        id NUMBER(10) NOT NULL,
+        player_id NUMBER(10),
+        question_id NUMBER(10),
+        PRIMARY KEY(id),
+        FOREIGN KEY (player_id) REFERENCES PLAYER(id),
+        FOREIGN KEY (question_id) REFERENCES QUESTION(id),
+        UNIQUE(player_id, question_id)
+        );
