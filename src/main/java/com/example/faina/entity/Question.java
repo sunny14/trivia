@@ -12,8 +12,15 @@ public class Question {
 
     private String question;
 
-    //@ForeignKey(name = "game.id")
     private Long gameId;
 
     private Integer score;
+
+    public Long getGameId() {
+        return gameId;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
 }

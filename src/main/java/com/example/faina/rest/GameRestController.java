@@ -22,13 +22,16 @@ public class GameRestController {
     @PostMapping(value = "/guess", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity postJson(@RequestBody Guess guess)   {
 
-        logger.info("rest controller got a guess:\n"+guess);
+        logger.info(
+                "rest controller got a guess:\n["+guess.getAnswer()+"] from user "+guess.getUserName()+" in game "+guess.getGameId()
+        );
 
         try {
             Integer score = gameService.guess(guess.getUserName(), guess.getAnswer(), guess.getGameId());
-
+            logger.info("score is "+score);
             return ResponseEntity.ok(score);
         }catch (Throwable th)   {
+            logger.error(th.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
