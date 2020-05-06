@@ -1,6 +1,6 @@
 package com.example.faina.rest;
 
-import com.example.faina.model.Guess;
+import com.example.faina.rest.entity.Guess;
 import com.example.faina.service.GameService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,10 +37,10 @@ public class GameRestController {
     }
 
 
-/*    @GetMapping(value = "/leaderboard")
+    @GetMapping(value = "/board")
     public ResponseEntity getLeaderboard(@RequestParam Long gameId)  {
-        return ResponseEntity.ok(getBoard(gameId));
-    }*/
+        return ResponseEntity.ok(gameService.getBoard(gameId));
+    }
 
 
 }

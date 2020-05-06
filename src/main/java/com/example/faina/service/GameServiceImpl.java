@@ -13,8 +13,13 @@ import com.example.faina.repo.QuestionToAnswerRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.Optional;
 
+@Service
 public class GameServiceImpl implements GameService {
 
     private static Logger logger = LoggerFactory.getLogger(GameServiceImpl.class);
@@ -39,6 +44,11 @@ public class GameServiceImpl implements GameService {
         return score;
     }
 
+    @Override
+    public HashMap<String, Integer> getBoard(Long gameId) {
+        return null;
+    }
+
     private int getScore(String playerName, String answer, Long gameId) throws UnknownUserException, PersistingException {
         int score = WRONG_ANSWER_SCORE;
         Optional<QuestionToAnswer> q2a = q2aRepo.findByAnswer(answer);
@@ -52,6 +62,7 @@ public class GameServiceImpl implements GameService {
         return score;
     }
 
+    @Transactional
     private void persistAnswer(String playerName, Long questionId) throws UnknownUserException, PersistingException {
         logger.info("persisting the right answer for "+playerName+", question "+questionId);
         Optional<Player> player = playerRepo.findByName(playerName);

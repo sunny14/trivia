@@ -1,4 +1,4 @@
-package com.example.faina.model;
+package com.example.faina.rest.entity;
 
 public class Guess {
     String userName;
@@ -28,10 +28,4 @@ public class Guess {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
-
-        /*public Guess(String uName, Long gameId, String answer) {
-            this.userName = uName;
-            this.gameId = gameId;
-            this.answer = answer;
-        }*/
 }
