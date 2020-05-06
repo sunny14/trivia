@@ -1,0 +1,2 @@
+INSERT INTO GAME (id, name) VALUES (1, 'TRIVIA1');
+INSERT INTO GAME (id, name) VALUES (2, 'TRIVIA2');
