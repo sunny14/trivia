@@ -16,6 +16,10 @@ public class Question {
 
     private Integer score;
 
+    public Long getId() {
+        return id;
+    }
+
     public Long getGameId() {
         return gameId;
     }

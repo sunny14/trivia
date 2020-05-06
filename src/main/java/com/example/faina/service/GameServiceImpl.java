@@ -17,7 +17,10 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class GameServiceImpl implements GameService {
@@ -46,7 +49,18 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public HashMap<String, Integer> getBoard(Long gameId) {
-        return null;
+
+      /*  List<Long> questionIds =
+                qRepo.findAllByGameId(gameId)
+                .stream()
+                .map(x -> x.getId())
+                .collect(Collectors.toList());
+        Map<Long, Integer> res = playerToQuestionRepo.findScores(questionIds);
+        logger.info("getBoard: "+res.size());
+
+        //TODO: convert user ids to user names*/
+      //TODO
+      return null;
     }
 
     private int getScore(String playerName, String answer, Long gameId) throws UnknownUserException, PersistingException {
